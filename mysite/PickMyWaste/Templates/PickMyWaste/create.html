@@ -1,0 +1,18 @@
+
+{%extends 'pickmywaste/index.html' %}
+
+{% block title%} Create New Listing {%endblock%}
+
+{%block content%}
+Create New Listing
+<form method="post" action="/PickMyWaste/create/">
+    {%csrf_token%}
+    {{form.as_p}} 
+    <button type="submit", name="save" >Create New</button>
+</form>
+{%endblock%}
+
+<!-- creating forms -->
+<!-- django will generate the html to create form for us with {{form}}-->
+<!-- form.as_ul for list item -->
+<!-- {%csrf_token%} need to add every time we create a form (for security) -->

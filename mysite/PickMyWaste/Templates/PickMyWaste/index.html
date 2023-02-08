@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Waste Bar</title> 
+    <!-- <link rel = "stylesheet" href = "../styles/index.css"> -->
+</head>
+    <style type="text/css">
+        .navbar {
+            height:100%;
+            width:160px;
+            position:fixed;
+            z-index:1;
+            left:0;
+            background-color:#111;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+        .navbar a{
+            padding:6px 8px 6px 16px;
+            text-decoration: none;
+            font-size:25px;
+            color: #818181;
+            display:block;
+        }
+
+        .navbar a:hover {
+             color: #f1f1f1;
+        }
+        
+        .main {
+            margin-left:160px;
+            padding: 0px 10px;
+        }
+
+    </style>
+    <title>{% block title%} Waste Bar {%endblock%} </title>
+<body>
+    <header>
+        <h1>Waste Bar</h1>
+    </header>
+    <nav class = "navbar">
+        <a href = "/PickMyWaste/foodmap">Food Map</a> 
+        <a href = "/PickMyWaste/about"> About Us </a>
+        <a href = "/PickMyWaste/create"> Contribute</a>
+        <a href = "/PickMyWaste/foodlist"> Food List </a>
+    </nav>
+    <p>{{name}}</p>
+    <div id="content", name="content" class="main" >{%block content%}{%endblock%}</div>
+</body>
+</html>
+
+<!-- content block can be overrode -->
