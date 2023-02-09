@@ -10,11 +10,20 @@ Check food listing by company
     <button type="submit", name="save" >Get Food Listing</button>
 <ul>
     {%for food in object_list%}
-    <li>{{food.title}}</li>
+    <li>{{food.title}}-{{food.description}}</li>
     {% endfor %}
 </ul>
-
-<p>{{donor.address}};<p>
+<!-- <div class="row"> -->
+<!-- <div class="mb-3 col-12 col-sm-3>"> -->
+<div class=".mx auto">
+<div class="card w-25">{%if donor.address%}
+    <h2="card-header">Contact Info</h2>
+    <div class-="card-body">
+<p class="card text">Address: {{donor.address}} Phone Number: {{donor.phone}} email:{{donor.email}}<p>
+</div>
+{%endif%}</div>
+ </div>
+</div> 
 
 
 

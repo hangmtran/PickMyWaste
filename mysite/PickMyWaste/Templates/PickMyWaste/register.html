@@ -1,0 +1,12 @@
+{%extends 'pickmywaste/index.html' %}
+
+
+{% block content %}
+
+<form method="post" action="/PickMyWaste/create/register/">
+    {%csrf_token%}
+    {{form.as_p}} 
+    <button type="submit", name="save" >Create New</button>
+</form> 
+
+{% endblock%} -->

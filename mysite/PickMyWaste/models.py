@@ -4,6 +4,7 @@
 import datetime
 from django.db import models
 from django.utils import timezone
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 
@@ -15,7 +16,10 @@ from django.utils import timezone
 class Donators(models.Model):
     name = models.CharField(max_length=100, blank=False, default='')
     address = models.CharField(max_length=300, default='')
-    phone = models.CharField(max_length=100,default='')
+    #use Django address from google API if time
+    phone = PhoneNumberField(null=False, blank=False, unique=True)
+    email=models.EmailField(max_length=254, default='')
+
    
     
     

@@ -11,9 +11,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-# import environ
-# env = environ.Env()
-# environ.Env.read_env()
+import os
+
 
 
 
@@ -41,7 +40,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # 'register.apps.RegisterConfig'
+    "phonenumber_field",
+    'address'
 ]
 
 
@@ -116,4 +116,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DATABASES = os.environ.get("DATABASES")
 

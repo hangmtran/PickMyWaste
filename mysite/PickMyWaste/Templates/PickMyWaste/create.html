@@ -4,12 +4,16 @@
 {% block title%} Create New Listing {%endblock%}
 
 {%block content%}
-Create New Listing
-<form method="post" action="/PickMyWaste/create/">
+<div class="card">
+<h1>Create New Listing</h1>
+<form class="col-lg-6 offset-lg-3 " method="post" action="/PickMyWaste/create/">
     {%csrf_token%}
     {{form.as_p}} 
     <button type="submit", name="save" >Create New</button>
 </form>
+</div>
+
+
 {%endblock%}
 
 <!-- creating forms -->
