@@ -13,7 +13,8 @@ urlpatterns = [
     path('<int:id>/',views.view_food, name="view_food"),
     # path('delete_event/<event_id>', views.delete_event, name = 'delete-event'), 
     path('foodlist/', views.list_food, name="food_list"),
-    path('create/register/', views.register, name="register"),
+    # path('create/register/', views.register, name="register"),
+    
  
 
 

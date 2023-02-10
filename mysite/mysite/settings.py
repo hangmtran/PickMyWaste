@@ -15,8 +15,10 @@ import os
 import django_heroku
 import dj_database_url
 from decouple import config
+from dotenv import load_dotenv 
 
 
+load_dotenv()
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -124,6 +126,22 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManinfestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
-DATABASES = os.environ.get("DATABASES")
+# DATABASES = os.environ.get("DATABASES")
 
 django_heroku.settings(locals())
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'Food', 
+#         'USER': 'postgres',
+#         'PASSWORD': 'Moonwaste1',
+#         'HOST': '127.0.0.1', 
+#         'PORT': '5432',
+#     }
+# }
+
+DATABASES = {
+  'default': dj_database_url.config(default=os.environ['DATABASE_URL'], conn_max_age=600)
+}
