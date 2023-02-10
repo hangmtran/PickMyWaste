@@ -1,2 +1,2 @@
-web: gunicorn mysite.manage
+web: gunicorn mysite.wsgi
 
