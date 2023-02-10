@@ -33,10 +33,10 @@ def home(response):
 # def detail(request, donator_id):
    
 #     donator = get_object_or_404(Donators, pk=donator_id)
-#     return render(request, 'pickmywaste/.html', {'donator': donator})
+#     return render(request, 'PickMyWaste/.html', {'donator': donator})
 
 def foodMap(response):
-    return render(response,"pickmywaste/foodMap.html")
+    return render(response,"PickMyWaste/foodMap.html")
 
 #function for form food listing
 def create(response): 
@@ -59,7 +59,7 @@ def create(response):
 
     else:
         form = CreateNewListing()#create a blank form and pass to HTML
-    return render(response,"pickmywaste/create.html",{"form":form})
+    return render(response,"PickMyWaste/create.html",{"form":form})
 
 # def delete_event(request, event_id):
 #     event = Food.objects()
@@ -123,7 +123,7 @@ def register(response):
 
 
 # def register(response):
-#     return render(response,"pickmywaste/register.html")
+#     return render(response,"PickMyWaste/register.html")
 
 
 
