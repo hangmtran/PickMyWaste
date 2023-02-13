@@ -3,28 +3,52 @@
 
 
 {%block content%}
+
+<div class="jumbotron">
+    <div class="container">
+      <h1 class="display-5">Available Food</h1>
 Check food listing by company
-<form method="post" action="/PickMyWaste/foodlist/">
+<form method="get" action="/PickMyWaste/foodlist/" class="form-group">
     {%csrf_token%}
     {{form}} 
-    <button type="submit", name="save" >Get Food Listing</button>
+    <button type="submit", name="save" class="btn btn-lg btn-danger">Get Food Listing</button>
 <ul>
     {%for food in object_list%}
     <li>{{food.title}}-{{food.description}}</li>
     {% endfor %}
 </ul>
-<!-- <div class="row"> -->
-<!-- <div class="mb-3 col-12 col-sm-3>"> -->
-<div class=".mx auto">
-<div class="card w-25">{%if donor.address%}
-    <h2="card-header">Contact Info</h2>
-    <div class-="card-body">
-<p class="card text">Address: {{donor.address}} Phone Number: {{donor.phone}} email:{{donor.email}}<p>
+
+    <div class="card border-dark mb-3"  style="max-width: 18rem;">{%if donor.name%}
+    <h2= class= "card-header" >Contact Info</h2>
+    <div class="card-body">
+        <p class="card title"> {{donor.name}} </p>
+        </div>
+        <ul class="list-group list-group-flush">
+ <li class="list-group-item">Address: {{donor.address}}</li>
+ <li class="list-group-item"> Phone Number: {{donor.phone}}</li>
+ <li class="list-group-item">    Email:{{donor.email}}</li>
 </div>
+</ul>
 {%endif%}</div>
  </div>
 </div> 
+</div>
 
+
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-11">
+<hr>
+
+</div> <!-- /container -->
+
+
+
+<footer class="container">
+<p>&copy; Hang's World</p>
+</footer>
 
 
 {%endblock%}

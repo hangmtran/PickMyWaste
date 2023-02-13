@@ -4,19 +4,34 @@
 {% block title%} Create New Listing {%endblock%}
 
 {%block content%}
-<div class="card">
-<h1>Create New Listing</h1>
+<div class="jumbotron">
+    <div class="container">
+
+    <h1 class="display-5">Create New Listing</h1>
+    <br></br>
+</div>
+</div>
+
 <form class="col-lg-6 offset-lg-3 " method="post" action="/PickMyWaste/create/">
     {%csrf_token%}
     {{form.as_p}} 
-    <button type="submit", name="save" >Create New</button>
+    <button type="submit", name="save" class="btn btn-lg btn-danger" >Create New</button>
 </form>
 </div>
 
 
-{%endblock%}
 
-<!-- creating forms -->
-<!-- django will generate the html to create form for us with {{form}}-->
-<!-- form.as_ul for list item -->
-<!-- {%csrf_token%} need to add every time we create a form (for security) -->
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-11">
+<hr>
+
+</div> <!-- /container -->
+
+
+
+<footer class="container">
+<p>&copy; Hang's World</p>
+</footer>
+{%endblock%}

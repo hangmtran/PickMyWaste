@@ -9,7 +9,7 @@ from .forms import CreateNewListing, FilterFoodList, DonatorRegistration
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
 from django.views.generic.list import ListView
-# from django.contrib import messages
+from django.contrib import messages
 
 
 
@@ -39,27 +39,27 @@ def foodMap(response):
     return render(response,"PickMyWaste/foodMap.html")
 
 #function for form food listing
-def create(response): 
-    if response.method == "POST": 
-        form = CreateNewListing(response.POST)
+def create(request): 
+    if request.method == "POST": 
+        form = CreateNewListing(request.POST)
         if form.is_valid(): 
             donator = form.cleaned_data["donator"]
             title = form.cleaned_data["title"]
             description = form.cleaned_data["description"]
             expiration_date = form.cleaned_data["expiration_date"]
             prepackaged = form.cleaned_data["prepackaged"]
-            # messages.success(request, "Profile updated successfully!")
+            messages.success(request, "Profile updated successfully! Thank you for contributing.")
             
             t = Food(donator=donator, title=title, description= description, expiration_date = expiration_date, prepackaged = prepackaged) 
            
             t.save() 
          
-        # redirect the page to the id of the foodlisting
+   
             return redirect('view_food', id = t.id)
 
     else:
-        form = CreateNewListing()#create a blank form and pass to HTML
-    return render(response,"PickMyWaste/create.html",{"form":form})
+        form = CreateNewListing()
+    return render(request,"PickMyWaste/create.html",{"form":form})
 
 # def delete_event(request, event_id):
 #     event = Food.objects()
@@ -74,8 +74,8 @@ def view_food(request, id):
 
 
 def list_food(response):
-    if response.method == "POST": 
-        form = FilterFoodList(response.POST)
+    if response.method == "GET": 
+        form = FilterFoodList(response.GET)
         if form.is_valid():
             donator = form.cleaned_data["donator"]
             ls = Donators.objects.get(id = donator.id)
@@ -86,44 +86,32 @@ def list_food(response):
          form = FilterFoodList()
     return render(response,"PickMyWaste/food_list.html",{"form":form})
 
-def register(response):
-    if response.method == "POST": 
-        form = DonatorRegistration(response.POST)
+def register(request):
+    if request.method == "POST": 
+        form = DonatorRegistration(request.POST)
         if form.is_valid():
             name = form.cleaned_data["name"]
             address= form.cleaned_data["address"]
-            # phone= form.cleaned_data["phone"]
+            phone= form.cleaned_data["phone"]
             email = form.cleaned_data["email"]
-            
-            t = Donators(name=name, address=address, email=email)
+            messages.success(request, "Registration created successfully!")
+            t = Donators(name=name, address=address, email=email, phone=phone)
 
             t.save()
 
-            return redirect('view_register', id = t.id)
-            # return HttpResponseRedirect('/home/')
 
-        else:
-            form = DonatorRegistration()
-        return render(response,"PickMyWaste/register.html",{"form":form})
-
-# def view_register(request):
-#     register = Donators.objects.get(id=id)
-#     return render (request,"PickMyWaste/register.html",{"register":register})
+    else:
+        form = DonatorRegistration()
+    return render(request,"PickMyWaste/register.html",{"form":form})
 
 
 
 
-            
-            
-
-#  name = models.CharField(max_length=100, blank=False, default='')
-#     address = models.CharField(max_length=300, default='')
-#     phone = PhoneNumberField(null=False, blank=False, unique=True)
-#     email=models.EmailField(max_length=254, default='')
 
 
-# def register(response):
-#     return render(response,"PickMyWaste/register.html")
+           
+        
+
 
 
 

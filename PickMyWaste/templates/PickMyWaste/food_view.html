@@ -1,9 +1,48 @@
 {%extends 'PickMyWaste/index.html' %}
 
-{% block content %}
-<h1> Thank you for contributing!</h1>
 
-<div class="card w-25">
-<p>Food Title: {{food.title}}; Description: {{food.description}}; expiration date: {{food.expiration_date}}; pre-packaged: {{food.prepackaged}}; perishable: {{food.perishable}}, pub_date: {{food.pub_date}} </p>
-{% endblock%}
+
+{% block content %}
+
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
 </div>
+{% endfor %}
+<div class="jumbotron">
+    <div class="container">
+<br></br>
+<div class="card border-dark mb-3"  style="max-width: 18rem;">
+    <h2= class= "card-header" >Your contribution on {{food.pub_date}} </h2>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+        <li class="list-group-item">Food Item: {{food.title}}</li>
+            <li class="list-group-item"> Description: {{food.description}}
+        <li class="list-group-item">  expiration date: {{food.expiration_date}}</li>
+                <li class="list-group-item"> pre-packaged: {{food.prepackaged}}</li>
+                        <li class="list-group-item">perishable: {{food.perishable}}</li>
+                    </div>
+                </div>
+        
+                </div>
+                </div>
+
+                <div class="container">
+                    <!-- Example row of columns -->
+                    <div class="row">
+                      <div class="col-md-11">
+                <hr>
+
+            </div> <!-- /container -->
+        
+ 
+        
+          <footer class="container">
+            <p>&copy; Hang's World</p>
+          </footer>
+{% endblock%}

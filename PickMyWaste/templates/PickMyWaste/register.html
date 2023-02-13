@@ -2,11 +2,46 @@
 
 
 {% block content %}
+{% for message in messages %}
+<div class="container-fluid p-0">
+  <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="True">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+</div>
+{% endfor %}
 
-<form method="post" action="/PickMyWaste/create/register/">
+<div class="jumbotron">
+    <div class="container">
+
+    <h1 class="display-5">Registration</h1>
+    <h2 class="display-13">Register to be a donator!</h2>
+    <br></br>
+</div>
+</div>
+
+<form method="post" >
     {%csrf_token%}
     {{form.as_p}} 
-    <button type="submit", name="save" >Create New</button>
+    <button type="submit", name="save" class="btn btn-lg btn-danger">Create New</button>
 </form> 
 
-{% endblock%} -->
+</div>
+</div>
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-12">
+<hr>
+
+</div> <!-- /container -->
+
+
+
+<footer class="container">
+<p>&copy; Hang's World</p>
+</footer>
+
+{% endblock%} 

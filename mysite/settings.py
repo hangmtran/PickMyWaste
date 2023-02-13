@@ -16,6 +16,8 @@ import django_heroku
 import dj_database_url
 from decouple import config
 from dotenv import load_dotenv 
+from django.contrib import messages
+
 
 
 load_dotenv()
@@ -44,11 +46,19 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
+    # "django.contrib.staticfiles",
     "phonenumber_field",
-    'address'
+    'address',
+
 ]
 
+# STATIC_URL = '/static/'
+# MEDIA_ROOT='/media/'
+# MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+# STATICFILES_DIRS= (
+#     os.path.join(BASE_DIR,'static'),
+# )
+ 
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -126,22 +136,19 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManinfestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
-# DATABASES = os.environ.get("DATABASES")
+
 
 django_heroku.settings(locals())
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'Food', 
-#         'USER': 'postgres',
-#         'PASSWORD': 'Moonwaste1',
-#         'HOST': '127.0.0.1', 
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
   'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'), conn_max_age=600)
 }
+
+MESSAGE_TAGS = {
+        messages.DEBUG: 'alert-secondary',
+        messages.INFO: 'alert-info',
+        messages.SUCCESS: 'alert-success',
+        messages.WARNING: 'alert-warning',
+        messages.ERROR: 'alert-danger',
+ }

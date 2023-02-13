@@ -28,7 +28,7 @@ class FilterFoodList(forms.Form):
 class DonatorRegistration(forms.Form):
     name=forms.CharField(label="Company Name", max_length=100)
     address=forms.CharField(label="address", max_length=100)
-    # phone=PhoneNumberField(label="phone")
+    phone=PhoneNumberField(label="phone")
     email=forms.EmailField(label="email")
 
 

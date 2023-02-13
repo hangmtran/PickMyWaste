@@ -18,8 +18,10 @@ from django.urls import include, path
 
 
 
+
 urlpatterns = [
     path('PickMyWaste/',include('PickMyWaste.urls')),
     path("admin/", admin.site.urls),
-
 ]
+
+
