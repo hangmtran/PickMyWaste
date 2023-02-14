@@ -1,28 +1,17 @@
 
-
 # Create your models here.
-import datetime
 from django.db import models
-from django.utils import timezone
 from phonenumber_field.modelfields import PhoneNumberField
-
-
-
-
-    
 
 
 
 class Donators(models.Model):
     name = models.CharField(max_length=100, blank=False, default='')
     address = models.CharField(max_length=300, default='')
-    #use Django address from google API if time
     phone = PhoneNumberField(null=False, blank=False, unique=True)
     email=models.EmailField(max_length=254, default='')
-
-   
-    
-    
+  
+ 
 
     def __str__(self):
         return self.name
@@ -37,12 +26,8 @@ class Food(models.Model):
     prepackaged = models.BooleanField(null=True, blank=True)
     perishable = models.BooleanField(null=True, blank=True)
     
-
-
     def __str__(self):
         return self.title
 
-     # def was_published_recently(self):
-    #     return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
     

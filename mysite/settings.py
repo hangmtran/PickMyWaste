@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    # "django.contrib.staticfiles",
+    "django.contrib.staticfiles",
     "phonenumber_field",
     'address',
 
@@ -136,6 +136,8 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManinfestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
+
+# ECRET_KEY = os.environ.get("")
 
 
 django_heroku.settings(locals())

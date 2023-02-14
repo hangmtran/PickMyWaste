@@ -1,42 +1,19 @@
 from django.shortcuts import render
 from .models import Food, Donators
-
-from django.shortcuts import render, get_object_or_404
-
+from django.shortcuts import render
 from .models import Food, Donators
-
 from .forms import CreateNewListing, FilterFoodList, DonatorRegistration
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect
-from django.views.generic.list import ListView
 from django.contrib import messages
 
 
-
-
 def index(request):
-#     ls = Food.objects.get(id=id)
-#     latest_food_dict = {}
-    latest_food_list = Food.objects.order_by('-pub_date')[:5]
-    context = {'latest_food_list': latest_food_list}
-    return render(request, 'PickMyWaste/index.html', context)
-
-# def index(response,id):
-#     ls = Food.objects.get(id=id)
-#     return render(response, "PickMyWaste/foodlist.html", {"ls":ls})
+    return render(request, 'PickMyWaste/index.html', {})
 
 
 def home(response):
     return render(response, "PickMyWaste/home.html", {}) 
 
-
-# def detail(request, donator_id):
-   
-#     donator = get_object_or_404(Donators, pk=donator_id)
-#     return render(request, 'PickMyWaste/.html', {'donator': donator})
-
-def foodMap(response):
-    return render(response,"PickMyWaste/foodMap.html")
 
 #function for form food listing
 def create(request): 
@@ -61,15 +38,10 @@ def create(request):
         form = CreateNewListing()
     return render(request,"PickMyWaste/create.html",{"form":form})
 
-# def delete_event(request, event_id):
-#     event = Food.objects()
-# #     instance = Food.objects.get(id = id)
-# #     instance.delete()
 
 def view_food(request, id):
     food = Food.objects.get(id=id)
     return render (request,"PickMyWaste/food_view.html",{"food":food})
-
 
 
 
@@ -85,6 +57,7 @@ def list_food(response):
     else:
          form = FilterFoodList()
     return render(response,"PickMyWaste/food_list.html",{"form":form})
+
 
 def register(request):
     if request.method == "POST": 
@@ -103,6 +76,8 @@ def register(request):
     else:
         form = DonatorRegistration()
     return render(request,"PickMyWaste/register.html",{"form":form})
+
+
 
 
 
