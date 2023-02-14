@@ -5,6 +5,8 @@ from .models import Food, Donators
 from .forms import CreateNewListing, FilterFoodList, DonatorRegistration
 from django.shortcuts import redirect
 from django.contrib import messages
+from django.conf import settings
+from django.http import JsonResponse
 
 
 def index(request):
@@ -78,7 +80,30 @@ def register(request):
     return render(request,"PickMyWaste/register.html",{"form":form})
 
 
+def map(request):
+    key = settings.GOOGLE_API_KEY
+    context = {
+        'key':key,
+    }
+    return render(request, 'PickMyWaste/map.html',context)
 
+
+def mydata(request):
+    result_list = list(Donators.objects\
+                .exclude(latitude__isnull=True)\
+                .exclude(longitude__isnull=True)\
+                .exclude(latitude__exact='')\
+                .exclude(longitude__exact='')\
+                .values('id',
+                        'name', 
+                        'latitude',
+                        'longitude',
+                        'phone',
+                        'email',
+                        'country',
+                        ))
+  
+    return JsonResponse(result_list, safe=False)
 
 
 

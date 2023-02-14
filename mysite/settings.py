@@ -137,7 +137,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-# ECRET_KEY = os.environ.get("")
+GOOGLE_API_KEY= os.environ.get("GOOGLE_API_KEY")
 
 
 django_heroku.settings(locals())
