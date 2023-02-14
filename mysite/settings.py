@@ -52,13 +52,6 @@ INSTALLED_APPS = [
 
 ]
 
-# STATIC_URL = '/static/'
-# MEDIA_ROOT='/media/'
-# MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
-# STATICFILES_DIRS= (
-#     os.path.join(BASE_DIR,'static'),
-# )
- 
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -136,8 +129,9 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManinfestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+BASE_COUNTRY = "US"
 
-# ECRET_KEY = os.environ.get("")
 
 
 django_heroku.settings(locals())

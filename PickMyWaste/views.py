@@ -65,10 +65,13 @@ def register(request):
         if form.is_valid():
             name = form.cleaned_data["name"]
             address= form.cleaned_data["address"]
+            city=form.cleaned_data["city"]
+            state=form.cleaned_data["state"]
+            zipcode=form.cleaned_data["zipcode"]
             phone= form.cleaned_data["phone"]
             email = form.cleaned_data["email"]
             messages.success(request, "Registration created successfully!")
-            t = Donators(name=name, address=address, email=email, phone=phone)
+            t = Donators(name=name, address=address, city=city, state=state, zipcode=zipcode, email=email, phone=phone)
 
             t.save()
 
